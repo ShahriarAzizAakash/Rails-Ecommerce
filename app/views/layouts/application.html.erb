@@ -50,7 +50,7 @@
             <%# end %>
 
             <% if user_signed_in? %>
-              <%= link_to 'Sell', '#', class: "navbar-item button is-light" %>
+              <%= link_to 'Sell A Product', new_product_path, class: "navbar-item button is-light" %>
 
               <div class="navbar-item has-dropdown is-hoverable">
                 <%= link_to 'Account', edit_user_registration_path, class: "navbar-link" %>
@@ -60,10 +60,12 @@
                 </div>
               </div>
             <% else %>
-
-            <%= link_to "Sign In", new_user_session_path, class:"navbar-item button is-warning" %>
-            <%= link_to "Sign up", new_user_registration_path, class:"navbar-item button is-warning"%>
-
+            <div class="navbar-item">
+              <%= link_to "Sign In", new_user_session_path, class:"navbar-item button is-white" %>
+            </div>
+            <div class="navbar-item">
+              <%= link_to "Sign up", new_user_registration_path, class:"navbar-item button is-white"%>
+            </div>
             <% end %>
 
             </div>
