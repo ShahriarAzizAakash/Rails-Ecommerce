@@ -1,0 +1,56 @@
+<% content_for :body_class, 'bg-light' %>
+
+<section class="section product-show">
+  <div class="columns">
+    <div class="column is-8">
+      <h1 class="title is-2"><%= @product.title %></h1>
+
+
+
+      <div class="feature-image">
+        <%= image_tag(@product.image_url(:default)) %>
+      </div>
+
+      <div class="content pa4 mt3 bg-white border-radius-3">
+
+      <h3 class="subtitle is-4">Description</h3>
+      <%= @product.description %>
+
+
+      <h3 class="subtitle is-4 pt5">Product Specs</h3>
+
+      <table class="table is-narrow">
+        <% if @product.condition %>
+        <tr>
+          <td class="has-text-weight-bold">Condition:</td>
+          <td><%= @product.condition %></td>
+        </tr>
+        <% end %>
+
+        <% if @product.brand %>
+          <tr>
+            <td class="has-text-weight-bold">Brand:</td>
+            <td><%= @product.brand %></td>
+          </tr>
+        <% end %>
+
+        <tr>
+          <td class="has-text-weight-bold">category:</td>
+          <td><%= @product.category %></td>
+        </tr>
+      </table>
+    </div>
+    </div>
+    <div class="column is-3 is-offset-1">
+      <div class="bg-white pa4 border-radius-3">
+        <h4 class="title is-5 has-text-centered"><%= number_to_currency(@product.price) %></h4>
+        <p class="has-text-centered mb4">Sold by <%= @product.user.name %></p>
+        <%#= button_to 'Add to cart', line_items_path(product_id: @product), class: 'button is-warning add-to-cart' %>
+      </div>
+    </div>
+  </div>
+
+  <% if product_author(@product) %>
+    <%= link_to 'Edit', edit_product_path(@product), class: 'button' %>
+  <% end %>
+</section>
